@@ -4,7 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('./util/db');
-// var {spider} =require('./spider');
+var {spider} =require('./spider');
+const {start}= require('./plugins/NeteaseCloudMusicApi-4.8.10/app');
 
 var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
@@ -57,6 +58,7 @@ app.use(function(err, req, res, next) {
 
 app.listen(9527,()=>{
   console.log("服务器启动，端口：9527");
-  // spider();
+  spider();
+  start();
 });
 
