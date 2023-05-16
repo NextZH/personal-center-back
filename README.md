@@ -44,15 +44,23 @@ $ npm install
 
 ```js
 #!/usr/bin/env node
+let server=null;
 async function start() {
   // 如果需要手动修改anonymous_token，需要注释generateConfig调用
-  require('./server').serveNcmApi({
+  server=require('./server').serveNcmApi({
     checkVersion: true,
   })
+}
+async function end() {
+  // 关闭服务
+  server.close();
+  server=null;
 }
 // start()
 module.exports={
   start,
+  end,
+  server,
 }
 ```
 
@@ -106,14 +114,14 @@ node app.js
 ### 项目名: 
 
 ````sh
-现用名：saolei
-实际名称：personal-center
+现用名：next-zoom
+曾用名称：saolei
 名称问题相关请查看前端README.md文件介绍
 ````
 
 ### 地址:
 
 ```sh
-https://github.com/NextZH/saolei
+https://github.com/NextZH/next-zoom
 ```
 
